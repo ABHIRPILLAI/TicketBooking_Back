@@ -17,7 +17,10 @@ const User=mongoose.model('User',{
     password:String,
     username:String,
     Ticket_Details:[],
-    Date:[]
+    Date:[],
+    Time:[],
+    Seat:[],
+    Amount:[]
 
 });
 const Rent=mongoose.model('Rent',{

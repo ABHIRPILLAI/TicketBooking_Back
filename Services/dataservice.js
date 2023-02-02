@@ -125,7 +125,99 @@ const deposit2=(email,date)=>{
         return{
           status:true,
           statusCode:200,
-        message:`Date Fixed`
+        message:`Date and Time Fixed`
+        }
+    }
+    else{
+      return{
+        status:false,
+        statusCode:400,
+        message:"Error"
+      }
+    }
+  })
+}
+const deposit3=(email,time)=>{
+
+    
+  // let userDetails=this.userDetail
+  return db.User.findOne({email})
+  .then(user=>{
+    if (user) {
+
+      user.Time.push({//push values to transaction array
+        Type:'Time',
+        Time:time//the Type name and amount name is refered in *ngFor
+      })
+     user.save();
+      // console.log(userDetails);//to check whether the data is disolaying
+     
+        return{
+          status:true,
+          statusCode:200,
+        message:`Date and Time Fixed`
+        }
+    }
+    else{
+      return{
+        status:false,
+        statusCode:400,
+        message:"Error"
+      }
+    }
+  })
+}
+
+const deposit4=(email,seat)=>{
+
+    
+  // let userDetails=this.userDetail
+  return db.User.findOne({email})
+  .then(user=>{
+    if (user) {
+
+      user.Seat.push({//push values to transaction array
+        Type:'Seat',
+        Seat:seat//the Type name and amount name is refered in *ngFor
+      })
+     user.save();
+      // console.log(userDetails);//to check whether the data is disolaying
+     
+        return{
+          status:true,
+          statusCode:200,
+        message:`Seat added`
+        }
+    }
+    else{
+      return{
+        status:false,
+        statusCode:400,
+        message:"Error"
+      }
+    }
+  })
+}
+const deposit5=(email,amount)=>{
+
+    
+  // let userDetails=this.userDetail
+  return db.User.findOne({email})
+  
+  .then(user=>{
+    if (user) {
+
+      user.Amount.push({//push values to transaction array
+        Type:'Amount',
+        Amount:amount//the Type name and amount name is refered in *ngFor
+      })
+     user.save();
+      // console.log(userDetails);//to check whether the data is disolaying
+     
+        return{
+          status:true,
+          statusCode:200,
+        message:`Amount paid`
         }
     }
     else{
@@ -174,6 +266,19 @@ const getTransaction2=(email)=>{//acno arde ano ayalde acnt details kitnm
 
    }
   }
+})}
+  const getTransaction3=(email)=>{//acno arde ano ayalde acnt details kitnm
+    return db.User.findOne({email})
+    .then(user=>{
+      if (user)
+       {
+    return {
+      status:true,
+      statusCode:200,
+      // message:"invalid userdetails"
+      Time: user.Time
+     }
+    }
   else{
     return {
       status:false,
@@ -182,7 +287,47 @@ const getTransaction2=(email)=>{//acno arde ano ayalde acnt details kitnm
      }
   }
 })}
+const   getTransaction4=(email)=>{//acno arde ano ayalde acnt details kitnm
+  return db.User.findOne({email})
+  .then(user=>{
+    if (user)
+     {
+  return {
+    status:true,
+    statusCode:200,
+    // message:"invalid userdetails"
+    Seat: user.Seat
+   }
+  }
+else{
+  return {
+    status:false,
+    statusCode:400,
+    message:"User not Found"
+   }
+}
+})}
+const getTransaction5=(email)=>{//acno arde ano ayalde acnt details kitnm
+  return db.User.findOne({email})
+  .then(user=>{
+    if (user)
+     {
+  return {
+    status:true,
+    statusCode:200,
+    // message:"invalid userdetails"
+    Amount: user.Amount
+   }
+  }
+else{
+  return {
+    status:false,
+    statusCode:400,
+    message:"User not Found"
+   }
+}
+})}
 
 module.exports={
-    login,register,deposit,getTransaction,deposit2,getTransaction2
+    login,register,deposit,getTransaction,deposit2,getTransaction2,deposit3,getTransaction3,deposit4,getTransaction4,deposit5,getTransaction5
    }

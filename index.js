@@ -103,6 +103,39 @@ dataService.deposit2(req.body.email,req.body.date)//to access dataservice in ind
    
 
 })
+app.post('/deposit3',jwtMiddleware,(req,res)=>
+{
+    console.log(req.body);
+dataService.deposit3(req.body.email,req.body.time)//to access dataservice in index page ie,first
+.then(result=>{
+    res.status(result.statusCode).json(result)//so we add staus etc on dataservice so display like that in json format so res.json(result)
+
+ })
+   
+
+})
+app.post('/deposit4',jwtMiddleware,(req,res)=>
+{
+    console.log(req.body);
+dataService.deposit4(req.body.email,req.body.seat)//to access dataservice in index page ie,first
+.then(result=>{
+    res.status(result.statusCode).json(result)//so we add staus etc on dataservice so display like that in json format so res.json(result)
+
+ })
+   
+
+})
+app.post('/deposit5',jwtMiddleware,(req,res)=>
+{
+    console.log(req.body);
+dataService.deposit5(req.body.email,req.body.amount)//to access dataservice in index page ie,first
+.then(result=>{
+    res.status(result.statusCode).json(result)//so we add staus etc on dataservice so display like that in json format so res.json(result)
+
+ })
+   
+
+})
 
 app.post('/transaction',jwtMiddleware,(req,res)=>
 {
@@ -119,7 +152,30 @@ app.post('/transaction2',jwtMiddleware,(req,res)=>
 dataService.getTransaction2(req.body.email)//to access dataservice in index page ie,first
 .then(result=>{
     res.status(result.statusCode).json(result)//so we add staus etc on dataservice so display like that in json format so res.json(result)
-
+ })
+})
+app.post('/transaction3',jwtMiddleware,(req,res)=>
+{
+    console.log(req.body);
+dataService.getTransaction3(req.body.email)//to access dataservice in index page ie,first
+.then(result=>{
+    res.status(result.statusCode).json(result)//so we add staus etc on dataservice so display like that in json format so res.json(result)
+ })
+})
+app.post('/transaction4',jwtMiddleware,(req,res)=>
+{
+    console.log(req.body);
+dataService.getTransaction4(req.body.email)//to access dataservice in index page ie,first
+.then(result=>{
+    res.status(result.statusCode).json(result)//so we add staus etc on dataservice so display like that in json format so res.json(result)
+ })
+})
+app.post('/transaction5',jwtMiddleware,(req,res)=>
+{
+    console.log(req.body);
+dataService.getTransaction5(req.body.email)//to access dataservice in index page ie,first
+.then(result=>{
+    res.status(result.statusCode).json(result)//so we add staus etc on dataservice so display like that in json format so res.json(result)
  })
 })
 
